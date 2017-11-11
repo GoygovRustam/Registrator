@@ -1,0 +1,17 @@
+<div *ngIf="hl7Segment" id="hl7-segment">
+  <div class="segment-name" (click)="collapsed = !collapsed">
+     {{hl7Segment.name}} -{{hl7Segment.value}}- {{hl7Segment.constructor.name}} ------------ {{hl7Segment.description}}
+  </div>
+ 
+  <div class="content" *ngIf="!collapsed">
+      <div *ngFor="let child of hl7Segment.children">
+        <hl7-segment 
+            *ngIf="child.constructor.name === 'SubField' || child.constructor.name === 'RepeatingField'" 
+            [hl7Segment]="child" 
+            [collapsed]="collapsed">
+        </hl7-segment>
+
+        <hl7-field *ngIf="child.constructor.name === 'Field'" [hl7Field]="child"></hl7-field>
+      </div>
+  </div>
+</div>

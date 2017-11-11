@@ -1,0 +1,5 @@
+<div *ngIf="hl7Message" id="hl7-message">
+  <div *ngFor="let segment of hl7Message.children">
+    <hl7-segment [hl7Segment]="segment"></hl7-segment>
+  </div>
+</div>
