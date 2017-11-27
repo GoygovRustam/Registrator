@@ -9,10 +9,8 @@ import { Segment } from 'health-level-seven-parser';
 export class Hl7SegmentComponent implements OnInit {
   @Input()
   hl7Segment:Segment;
-  @Input()
-  collapsed:boolean;
+
 
   ngOnInit(){
-    this.collapsed = true;
   }
 }

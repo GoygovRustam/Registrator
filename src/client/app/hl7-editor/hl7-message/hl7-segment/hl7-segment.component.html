@@ -1,17 +1,15 @@
-<div *ngIf="hl7Segment" id="hl7-segment">
-  <div class="segment-name" (click)="collapsed = !collapsed">
-     {{hl7Segment.name}} -{{hl7Segment.value}}- {{hl7Segment.constructor.name}} ------------ {{hl7Segment.description}}
-  </div>
+<div *ngIf="hl7Segment" class="segment">
+  <mat-card class="segment-header" (click)="hl7Segment.expanded = !hl7Segment.expanded" matTooltip="{{hl7Segment.definition?.description}}" [matTooltipPosition]="'before'">
+    <mat-icon class="segment-icon">{{hl7Segment.expanded ? 'remove' : 'add'}}</mat-icon>
+     <b class="segment-name">[ {{hl7Segment.name}} ]</b>
+     <small *ngIf="hl7Segment.definition" class="segment-description"> [{{hl7Segment.definition.description}}] </small>{{hl7Segment.value}}
+  </mat-card>
  
-  <div class="content" *ngIf="!collapsed">
-      <div *ngFor="let child of hl7Segment.children">
-        <hl7-segment 
-            *ngIf="child.constructor.name === 'SubField' || child.constructor.name === 'RepeatingField'" 
-            [hl7Segment]="child" 
-            [collapsed]="collapsed">
-        </hl7-segment>
-
-        <hl7-field *ngIf="child.constructor.name === 'Field'" [hl7Field]="child"></hl7-field>
-      </div>
+  <div class="segment-content" *ngIf="hl7Segment.expanded && hl7Segment.constructor.name !== 'Field'">
+    <hl7-segment *ngFor="let child of hl7Segment.children"
+        [hl7Segment]="child">
+    </hl7-segment>
   </div>
+
+  <hl7-field *ngIf="hl7Segment.expanded && hl7Segment.constructor.name === 'Field'" [hl7Field]="hl7Segment"></hl7-field>
 </div>

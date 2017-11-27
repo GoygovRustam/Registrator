@@ -1,3 +1,30 @@
-.content{
+.segment-content{
     padding-left: 20px;
+}
+.segment{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    padding-bottom: 5px;
+    padding-top: 5px; 
+}
+
+.segment-header{
+   padding: 10px;
+} 
+.segment-header:hover{
+    background-color:rgb(241, 241, 241);
+}
+.segment-name{
+    color: rgb(64, 64, 238);
+}
+.segment-description{
+    color: gray;
+}
+
+.segment-icon{
+    vertical-align: sub;
+    color: rgb(64, 64, 238);
 }

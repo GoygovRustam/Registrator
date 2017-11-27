@@ -1,1 +1,6 @@
-{{hl7Field.name}} - {{hl7Field.value}} - {{hl7Field.constructor.name}} ---- {{hl7Field.definition | json}}
+<div class="field"> 
+    <mat-form-field class="field-input">
+        <input matInput [(ngModel)]="hl7Field.value">
+        <mat-hint>{{hl7Field.definition?.description}}</mat-hint>
+    </mat-form-field>
+</div>

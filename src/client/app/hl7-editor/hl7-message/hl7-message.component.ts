@@ -8,6 +8,5 @@ import { Hl7Message } from 'health-level-seven-parser';
 })
 export class Hl7MessageComponent{
   @Input()
-  hl7Message:Hl7Message;
-  
+  hl7Message:any;
 }
